@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">CRUD-TASKAPP</string>
     <!-- TODO: Remove or change this placeholder text -->
+
+    <!--    FireBase error msg-->
+    <string name="acc_not_register_fragment">Nenhuma conta encontrada com este email</string>
+    <string name="acc_email_invalid_fragment">Insira um email válido</string>
+    <string name="acc_password_invalid_fragment">Senha inválida, tente novamente.</string>
+    <string name="user_email_in_use_register_fragment">Este email já está sendo usado.</string>
+    <string name="user_password_more_strong_fragment">Insira uma senha mais forte.</string>
+    <string name="error_generic">Ocorreu um erro, tente novamente mais tarde.</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -36,6 +36,7 @@ class HomeFragment : Fragment() {
 
     private fun initClicks(){
         binding.mbLogout.setOnClickListener { userLogout() }
+
     }
 
     private fun userLogout() {

@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentRegisterBinding
+import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -61,6 +62,11 @@ class RegisterFragment : Fragment() {
                 if(task.isSuccessful){
                     findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
                 }else{
+                    Toast.makeText(
+                        requireActivity(),
+                        FirebaseHelper.getError(task.exception?.message ?: ""),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     binding.progressBar.isVisible = false
                 }
             }

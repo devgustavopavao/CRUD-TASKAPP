@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentRecoverBinding
+import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -68,8 +69,11 @@ class RecoverFragment : Fragment() {
                    Handler(Looper.getMainLooper()).postDelayed(this::closeFragment,3000)
                }else{
                  binding.progressBarRecover.isVisible = false
-                   Toast.makeText(requireContext(), task.exception.toString(),
-                       Toast.LENGTH_SHORT).show()
+                   Toast.makeText(
+                       requireActivity(),
+                       FirebaseHelper.getError(task.exception?.message ?: ""),
+                       Toast.LENGTH_SHORT
+                   ).show()
                }
            }
     }

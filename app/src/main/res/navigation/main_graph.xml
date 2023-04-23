@@ -33,6 +33,9 @@
             app:destination="@id/navigation"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_homeFragment_to_formFragment"
+            app:destination="@id/formFragment" />
     </fragment>
     <navigation android:id="@+id/navigation"
         app:startDestination="@id/loginFragment">
@@ -70,4 +73,9 @@
                 app:popUpToInclusive="true" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.devgusta.crud_taskapp.ui.FormFragment"
+        android:label="fragment_form"
+        tools:layout="@layout/fragment_form" />
 </navigation>

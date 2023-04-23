@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentLoginBinding
+import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -18,12 +19,12 @@ import com.google.firebase.ktx.Firebase
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private lateinit var auth : FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
-       _binding = FragmentLoginBinding.inflate(layoutInflater,container,false)
+    ): View {
+        _binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -34,7 +35,7 @@ class LoginFragment : Fragment() {
     }
 
 
-    private fun configClicks(){
+    private fun configClicks() {
         binding.textCadastrar.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
@@ -51,29 +52,34 @@ class LoginFragment : Fragment() {
         val email = binding.editEmail.text.toString().trim()
         val password = binding.editSenha.text.toString().trim()
 
-        if(email.isNotEmpty()){
-            if(password.isNotEmpty()){
+        if (email.isNotEmpty()) {
+            if (password.isNotEmpty()) {
                 binding.progressBarLogin.isVisible = true
-                loginUser(email,password)
-            }else{
-                Toast.makeText(requireActivity(), "Digite sua senha antes"
-                    , Toast.LENGTH_SHORT).show()
+                loginUser(email, password)
+            } else {
+                Toast.makeText(
+                    requireActivity(), "Digite sua senha antes", Toast.LENGTH_SHORT
+                ).show()
             }
-        }else{
-            Toast.makeText(requireActivity(), "Digite seu email antes"
-                , Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(
+                requireActivity(), "Digite seu email antes", Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
     private fun loginUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email,password)
-            .addOnCompleteListener { task->
-                if(task.isSuccessful){
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                }else{
+                } else {
                     binding.progressBarLogin.isVisible = false
-                    Toast.makeText(requireActivity(), task.exception?.message,
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireActivity(),
+                        FirebaseHelper.getError(task.exception?.message ?: ""),
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 }
             }
