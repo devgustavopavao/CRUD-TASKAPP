@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_bt"
+    android:padding="16dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_titulo_bs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textSize="17sp"
+        android:textColor="#FF0000"
+        android:drawableStart="@drawable/baseline_warning_amber_24"
+        android:text=" Atenção"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+
+    <View
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:layout_height="2dp"
+        android:background="?actionBarDivider"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/text_aviso_bs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="22dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="informe seu aviso aqui"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_entendi"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:text="Entendi"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:layout_marginTop="26dp"/>
+
+
+</LinearLayout>

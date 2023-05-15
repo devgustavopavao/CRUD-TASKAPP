@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentRegisterBinding
 import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
+import com.devgusta.crud_taskapp.utils.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -47,12 +48,10 @@ class RegisterFragment : Fragment() {
                 binding.progressBar.isVisible = true
                 registerUser(email,passoword)
             }else{
-                Toast.makeText(requireContext(), "Você esqueceu de digitar sua senha"
-                    , Toast.LENGTH_SHORT).show()
+                showBottomSheet(message = R.string.password_empty)
             }
         }else{
-            Toast.makeText(requireContext(), "Você esqueceu de digitar seu email"
-                , Toast.LENGTH_SHORT).show()
+            showBottomSheet(message = R.string.email_empty)
         }
     }
 
@@ -62,11 +61,9 @@ class RegisterFragment : Fragment() {
                 if(task.isSuccessful){
                     findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
                 }else{
-                    Toast.makeText(
-                        requireActivity(),
-                        FirebaseHelper.getError(task.exception?.message ?: ""),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                     showBottomSheet(message = FirebaseHelper.getError(
+                         task.exception?.message ?: ""
+                     ))
                     binding.progressBar.isVisible = false
                 }
             }

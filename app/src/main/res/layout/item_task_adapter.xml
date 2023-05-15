@@ -24,7 +24,7 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="mensagem da tarefa"
                 android:textColor="@color/black"

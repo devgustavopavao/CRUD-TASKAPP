@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentLoginBinding
 import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
+import com.devgusta.crud_taskapp.utils.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -57,14 +58,10 @@ class LoginFragment : Fragment() {
                 binding.progressBarLogin.isVisible = true
                 loginUser(email, password)
             } else {
-                Toast.makeText(
-                    requireActivity(), "Digite sua senha antes", Toast.LENGTH_SHORT
-                ).show()
+                showBottomSheet(message = R.string.password_empty)
             }
         } else {
-            Toast.makeText(
-                requireActivity(), "Digite seu email antes", Toast.LENGTH_SHORT
-            ).show()
+           showBottomSheet(message = R.string.email_empty)
         }
     }
 
@@ -75,12 +72,9 @@ class LoginFragment : Fragment() {
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                 } else {
                     binding.progressBarLogin.isVisible = false
-                    Toast.makeText(
-                        requireActivity(),
-                        FirebaseHelper.getError(task.exception?.message ?: ""),
-                        Toast.LENGTH_SHORT
-                    ).show()
-
+                    showBottomSheet(message = FirebaseHelper.getError(
+                        task.exception?.message ?: ""
+                    ))
                 }
             }
     }

@@ -5,17 +5,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.ItemTaskAdapterBinding
 import com.devgusta.crud_taskapp.model.TaskData
 
-class TaskAdapter(
+class  TaskAdapter(
     private val context: Context,
-    private val taskList: List<TaskData>,
     private val selectedItem : (TaskData, Int) -> Unit
-) : Adapter<TaskAdapter.MyViewHolder>() {
+) : ListAdapter <TaskData,TaskAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     companion object {
 
@@ -23,6 +24,17 @@ class TaskAdapter(
         val SELECTED_EDIT : Int = 1
         val SELECTED_REMOVE : Int = 2
         val SELECTED_NEXT : Int = 3
+
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TaskData>(){
+            override fun areItemsTheSame(oldItem: TaskData, newItem: TaskData): Boolean {
+              return oldItem.id == newItem.id && oldItem.tarefa == newItem.tarefa
+            }
+
+            override fun areContentsTheSame(oldItem: TaskData, newItem: TaskData): Boolean {
+                return oldItem == newItem && oldItem.tarefa == newItem.tarefa
+            }
+        }
+
     }
 
 
@@ -35,10 +47,9 @@ class TaskAdapter(
         )
     }
 
-    override fun getItemCount(): Int = taskList.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val data = taskList[position]
+        val data = getItem(position)
 
         holder.binding.textView.text = data.tarefa
 

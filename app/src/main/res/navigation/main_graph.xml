@@ -77,5 +77,10 @@
         android:id="@+id/formFragment"
         android:name="com.devgusta.crud_taskapp.ui.FormFragment"
         android:label="fragment_form"
-        tools:layout="@layout/fragment_form" />
+        tools:layout="@layout/fragment_form" >
+        <argument
+            android:name="task"
+            app:argType="com.devgusta.crud_taskapp.model.TaskData"
+            app:nullable="true" />
+    </fragment>
 </navigation>

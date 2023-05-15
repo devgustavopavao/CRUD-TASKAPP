@@ -11,4 +11,16 @@
     <string name="error_generic">Ocorreu um erro, tente novamente mais tarde.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_bottomSheet_aviso">Atenção</string>
+    <string name="text_bottomSheet_btn_entendi">Entendi</string>
+    <string name="formtask_empty">Digite uma tarefa antes.</string>
+    <string name="email_empty">Digite um email antes.</string>
+    <string name="password_empty">Digite uma senha antes.</string>
+    <string name="formtask_error">Ops algo deu errado, estamos trabalhando nisto.</string>
+    <string name="confirm_delete">Deseja realmente deletar essa tarefa?</string>
+    <string name="btn_confirm_delete">Sim</string>
+    <string name="edit_Form_task">Editando..</string>
+    <string name="save_task_btn">Salvar</string>
+
+
 </resources>
