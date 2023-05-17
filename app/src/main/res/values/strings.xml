@@ -21,6 +21,7 @@
     <string name="btn_confirm_delete">Sim</string>
     <string name="edit_Form_task">Editando..</string>
     <string name="save_task_btn">Salvar</string>
+    <string name="save_task">Tarefa Salva!</string>
 
 
 </resources>

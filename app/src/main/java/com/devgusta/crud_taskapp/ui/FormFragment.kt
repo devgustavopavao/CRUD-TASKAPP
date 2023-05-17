@@ -14,10 +14,11 @@ import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentFormBinding
 import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
 import com.devgusta.crud_taskapp.model.TaskData
+import com.devgusta.crud_taskapp.utils.BaseFragment
 import com.devgusta.crud_taskapp.utils.showBottomSheet
 
 
-class FormFragment : Fragment() {
+class FormFragment : BaseFragment() {
     private var _binding: FragmentFormBinding? = null
     private val binding get() = _binding!!
     private lateinit var dataTaskData: TaskData
@@ -57,11 +58,18 @@ class FormFragment : Fragment() {
                 if(newTask) dataTaskData = TaskData()
                 dataTaskData.tarefa = tarefa
                 dataTaskData.status = status
-                saveTask()
+
+                if(newTask){
+                    viewModel.insertTask(dataTaskData)
+                }else{
+                    viewModel.updateTask(dataTaskData)
+
+                }
             } else {
                showBottomSheet(message = R.string.formtask_empty)
                 binding.editTarefa.requestFocus()
             }
+            oberserveViewModel()
         }
 
         //radio Group recover
@@ -72,6 +80,19 @@ class FormFragment : Fragment() {
                     else -> 2
                 }
 
+        }
+    }
+    private fun oberserveViewModel() {
+        viewModel.taskUpdate.observe(viewLifecycleOwner) { taskInsert ->
+            Toast.makeText(requireContext(),
+                R.string.save_task, Toast.LENGTH_SHORT).show()
+            binding.progressBarForm.isVisible = false
+            hideKeyboard()
+        }
+        viewModel.taskInsert.observe(viewLifecycleOwner) { taskInsert ->
+            Toast.makeText(requireContext(),
+                R.string.save_task, Toast.LENGTH_SHORT).show()
+            findNavController().popBackStack()
         }
     }
     private fun configTask(){
@@ -91,29 +112,7 @@ class FormFragment : Fragment() {
           }
       )
     }
-    fun saveTask(){
-        FirebaseHelper.getDataBase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserId().toString())
-            .child(dataTaskData.id)
-            .setValue(dataTaskData).addOnCompleteListener {
-                if(it.isSuccessful){
-                    Toast.makeText(requireContext(),
-                        "Sua tarefa foi salva!", Toast.LENGTH_SHORT).show()
-                  if(newTask){
-                      findNavController().popBackStack()
-                  }else{//editando
-                      binding.progressBarForm.isVisible = false
-                      viewModel.setUptadeTask( dataTaskData)
-                      Toast.makeText(requireContext(),
-                          "Sua tarefa foi salva!", Toast.LENGTH_SHORT).show()
-                  }
-                }else{
-                    showBottomSheet(message =R.string.formtask_error )
-                    binding.progressBarForm.isVisible = false
-                }
-            }
-    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

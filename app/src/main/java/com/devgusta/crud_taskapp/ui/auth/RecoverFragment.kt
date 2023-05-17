@@ -13,6 +13,7 @@ import androidx.core.view.isVisible
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentRecoverBinding
 import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
+import com.devgusta.crud_taskapp.utils.BaseFragment
 import com.devgusta.crud_taskapp.utils.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,7 +21,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.app
 
 
-class RecoverFragment : Fragment() {
+class RecoverFragment : BaseFragment() {
     private  var _binding: FragmentRecoverBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -49,6 +50,7 @@ class RecoverFragment : Fragment() {
         val email = binding.editEmailRecover.text.toString().trim()
 
         if(email.isNotEmpty()){
+            hideKeyboard()
             binding.progressBarRecover.isVisible = true
             recoverUserAccount(email)
         }else{

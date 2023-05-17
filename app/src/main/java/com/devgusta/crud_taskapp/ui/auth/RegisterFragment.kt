@@ -11,12 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentRegisterBinding
 import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
+import com.devgusta.crud_taskapp.utils.BaseFragment
 import com.devgusta.crud_taskapp.utils.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : BaseFragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -45,6 +46,7 @@ class RegisterFragment : Fragment() {
         
         if(email.isNotEmpty()){
             if(passoword.isNotEmpty()){
+                hideKeyboard()
                 binding.progressBar.isVisible = true
                 registerUser(email,passoword)
             }else{

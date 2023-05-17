@@ -11,13 +11,14 @@ import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentLoginBinding
 import com.devgusta.crud_taskapp.fbhelper.FirebaseHelper
+import com.devgusta.crud_taskapp.utils.BaseFragment
 import com.devgusta.crud_taskapp.utils.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment(){
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -55,6 +56,7 @@ class LoginFragment : Fragment() {
 
         if (email.isNotEmpty()) {
             if (password.isNotEmpty()) {
+                hideKeyboard()
                 binding.progressBarLogin.isVisible = true
                 loginUser(email, password)
             } else {
