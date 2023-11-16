@@ -44,7 +44,7 @@
                 android:textColorHint="@color/app_default"
                 android:hint="@string/hint_email_login"
                 android:background="@drawable/bg_edit_text"
-                android:textColor="@color/white"/>
+                android:textColor="@color/app_default"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 android:textColorHint="@color/app_default"
                 android:background="@drawable/bg_edit_text"
                 android:hint="@string/hint_login_password"
-                android:textColor="@color/white"/>
+                android:textColor="@color/app_default"/>
 
             <Button
                 android:id="@+id/btn_create"
