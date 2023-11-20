@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/Auth" />
+            app:destination="@id/Auth"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splashFragment"/>
     </fragment>
     <navigation android:id="@+id/Auth"
         app:startDestination="@id/loginFragment">
@@ -38,5 +40,13 @@
             android:name="com.devgusta.crud_taskapp.ui.auth.RecoverFragment"
             android:label="fragment_recover2"
             tools:layout="@layout/fragment_recover2" />
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/homeFragment" />
     </navigation>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.devgusta.crud_taskapp.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

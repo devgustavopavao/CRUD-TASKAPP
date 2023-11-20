@@ -12,4 +12,5 @@
     <string name="create_account">Criar conta</string>
     <string name="recover_email">Enviar email</string>
     <string name="text_recover_mensage">Digite seu email para que possamos enviar um email de alteração de senha!</string>
+    <string name="btn_logout">Deslogar\n</string>
 </resources>
