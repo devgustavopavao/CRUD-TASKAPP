@@ -13,4 +13,12 @@
     <string name="recover_email">Enviar email</string>
     <string name="text_recover_mensage">Digite seu email para que possamos enviar um email de alteração de senha!</string>
     <string name="btn_logout">Deslogar\n</string>
+    <string name="tab_todo">A Fazer</string>
+    <string name="tab_doing">Fazendo</string>
+    <string name="tab_done">Feitos</string>
+    <string name="task_desc">Add task</string>
+    <string name="newtask_text_task">Tarefa</string>
+    <string name="newtask_hint">ex: Ir ao medico as 14:00</string>
+    <string name="newtask_create">Criar Tarefa</string>
+    <string name="recover_account">Recuperar Conta</string>
 </resources>

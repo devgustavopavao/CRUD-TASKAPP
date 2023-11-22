@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.RecoverFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".ui.NewTaskFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                     android:id="@+id/text_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recover_account"
+                    android:text="@string/newtask_create"
                     android:textColor="@color/white"
                     android:layout_gravity="center"/>
 
@@ -51,36 +52,68 @@
 
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="22dp"
-                android:layout_marginTop="22dp"
-                android:textColor="@color/white"
-                android:text="@string/text_recover_mensage"/>
-            <TextView
                 android:layout_width="wrap_content"
+                android:layout_marginTop="52dp"
                 android:layout_height="wrap_content"
-                android:text="@string/text_email_login"
+                android:text="@string/newtask_text_task"
                 android:textColor="@color/white" />
 
             <EditText
-                android:id="@+id/recover_email"
+                android:id="@+id/edit_newtask"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/bg_edit_text"
-                android:hint="@string/hint_email_login"
+                android:hint="@string/newtask_hint"
                 android:paddingStart="12dp"
                 android:textColor="@color/app_default"
-                android:textColorHint="@color/app_default" />
+                android:textColorHint="@color/app_default"
+                android:autofillHints=""
+                tools:ignore="RtlSymmetry"
+                android:inputType="text" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_marginTop="36dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/opt_todo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    app:buttonTint="@color/white"
+                    android:text="@string/tab_todo"
+                    android:textColor="@color/white"
+                    android:textColorLink="#FFFFFF" />
+                <RadioButton
+                    android:id="@+id/opt_doing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_doing"
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white"
+                    android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/opt_done"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:buttonTint="@color/white"
+                    android:text="@string/tab_done"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"/>
+            </RadioGroup>
 
             <Button
-                android:id="@+id/btn_recover"
+                android:id="@+id/btn_createtask"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="22dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="52dp"
                 android:background="@drawable/bg_edit_text"
-                android:text="@string/recover_email"
+                android:text="@string/newtask_create"
                 android:textAllCaps="true"
                 android:textColor="@color/app_default"
                 app:backgroundTint="@null" />
@@ -97,4 +130,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+</ScrollView>

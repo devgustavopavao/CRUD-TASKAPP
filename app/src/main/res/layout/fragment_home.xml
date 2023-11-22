@@ -20,11 +20,11 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:elevation="0dp"
                 app:tabTextColor="@color/white"
-                app:tabIndicator="@color/white"
+                app:tabIndicatorColor="@color/white"
                 android:background="@color/app_default"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_logout"
