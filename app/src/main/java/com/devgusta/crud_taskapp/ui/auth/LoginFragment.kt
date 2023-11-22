@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentLoginBinding
+import com.devgusta.crud_taskapp.util.initToolbar
 
 
 class LoginFragment : Fragment() {
@@ -26,6 +27,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getListeners()
+
     }
 
     private fun getListeners() {

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentRecoverBinding
+import com.devgusta.crud_taskapp.util.initToolbar
 
 
 class CreateAcountFragment : Fragment() {
@@ -20,6 +21,16 @@ class CreateAcountFragment : Fragment() {
     ): View {
         _binding = FragmentRecoverBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getListeners()
+        initToolbar(binding.toolbar)
+    }
+
+    private fun getListeners() {
+
     }
 
     override fun onDestroyView() {

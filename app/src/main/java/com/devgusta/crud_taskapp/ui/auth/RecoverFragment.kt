@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentRecover2Binding
+import com.devgusta.crud_taskapp.util.initToolbar
 
 
 class RecoverFragment : Fragment() {
@@ -20,6 +21,10 @@ class RecoverFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolbar(binding.toolbar)
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
