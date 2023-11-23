@@ -21,4 +21,10 @@
     <string name="newtask_hint">ex: Ir ao medico as 14:00</string>
     <string name="newtask_create">Criar Tarefa</string>
     <string name="recover_account">Recuperar Conta</string>
+    <string name="error_email_empty">Digite um email antes</string>
+    <string name="error_password_empty">Digite uma senha antes</string>
+    <string name="error_newtask_empty">Digite uma tarefa antes</string>
+    <string name="warning">Atenção</string>
+    <string name="bottomsheet_accept">Entendi</string>
+
 </resources>
