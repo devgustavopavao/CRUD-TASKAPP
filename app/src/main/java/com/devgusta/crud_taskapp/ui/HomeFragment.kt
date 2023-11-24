@@ -1,5 +1,6 @@
 package com.devgusta.crud_taskapp.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ class HomeFragment : Fragment() {
         initTab()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun initTab() {
       val adapter = ViewPagerAdapter(requireActivity())
       binding.viewpager.adapter = adapter
