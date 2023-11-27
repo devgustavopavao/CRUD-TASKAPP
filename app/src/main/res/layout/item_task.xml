@@ -32,7 +32,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_edit"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageButton5"
+                app:layout_constraintStart_toEndOf="@+id/btn_back"
                 android:contentDescription="Deletar" />
 
             <ImageButton
@@ -43,7 +43,7 @@
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_edit"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                app:layout_constraintEnd_toStartOf="@+id/btn_next"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/btn_delete"
                 android:contentDescription="Editar" />
@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="6dp"
+                android:textSize="18sp"
                 android:text="@string/lorem"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +63,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/btn_next"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="16dp"
@@ -75,7 +76,7 @@
                 android:contentDescription="Proximo" />
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/btn_back"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginBottom="16dp"

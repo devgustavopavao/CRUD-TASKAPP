@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.devgusta.crud_taskapp.R
+import com.devgusta.crud_taskapp.data.model.Status
+import com.devgusta.crud_taskapp.data.model.Task
 import com.devgusta.crud_taskapp.databinding.FragmentTodoBinding
+import com.devgusta.crud_taskapp.ui.adapter.TaskAdapter
 
 
 class TodoFragment : Fragment() {
+    private lateinit var taskAdapter: TaskAdapter
     private var _binding : FragmentTodoBinding? = null
     private val binding get() = _binding!!
 
@@ -25,8 +30,24 @@ class TodoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getListeners()
+        initRecycleView(getLista())
     }
 
+    private fun initRecycleView(taskList: List<Task>){
+        taskAdapter = TaskAdapter(taskList)
+         with(binding.rvTask){
+             layoutManager = LinearLayoutManager(requireContext())
+             setHasFixedSize(true)
+             adapter = taskAdapter
+         }
+    }
+    private fun getLista() = listOf(
+        Task("0","Caminhada com o linor as 18:00",Status.TASK_TODO),
+        Task("1","Fazer dieta de seg a sex",Status.TASK_TODO),
+        Task("2","Aos sabados comer frutas",Status.TASK_TODO),
+        Task("3","Domingo off para comer",Status.TASK_TODO),
+        Task("4","Entrar pro time do spotfy um dia",Status.TASK_TODO),
+    )
     private fun getListeners() {
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_newTaskFragment)
