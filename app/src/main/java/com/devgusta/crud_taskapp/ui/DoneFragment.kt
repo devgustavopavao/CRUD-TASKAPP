@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.data.model.Status
@@ -31,11 +32,35 @@ class DoneFragment : Fragment() {
     }
 
     private fun initRecycleView(taskList: List<Task>){
-        taskAdapter = TaskAdapter(taskList)
+        taskAdapter = TaskAdapter(taskList){task, opt ->
+            optSelected(task,opt)
+
+        }
         with(binding.rvTask){
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             adapter = taskAdapter
+        }
+    }
+    private fun optSelected(task: Task, option: Int) {
+        when (option) {
+            TaskAdapter.SELECTED_BACK -> {
+                Toast.makeText(requireContext(),
+                    "Voltar",
+                    Toast.LENGTH_SHORT).show()
+            }
+            TaskAdapter.SELECTED_DELETE -> {
+                Toast.makeText(requireContext(),
+                    "Removido ${task.task}",
+                    Toast.LENGTH_SHORT).show()
+            }
+
+            TaskAdapter.SELECTED_EDIT -> {
+                Toast.makeText(requireContext(),
+                    "Editando ${task.task}",
+                    Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
     private fun getLista() = listOf(
