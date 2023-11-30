@@ -9,14 +9,20 @@
         android:id="@+id/splashFragment"
         android:name="com.devgusta.crud_taskapp.ui.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/Auth"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/splashFragment"/>
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
-    <navigation android:id="@+id/Auth"
+    <navigation
+        android:id="@+id/Auth"
         app:startDestination="@id/loginFragment">
         <fragment
             android:id="@+id/loginFragment"
@@ -42,16 +48,25 @@
             tools:layout="@layout/fragment_recover2" />
         <action
             android:id="@+id/action_global_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/Auth"
+            app:popUpToInclusive="true" />
     </navigation>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.devgusta.crud_taskapp.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_newTaskFragment"
-            app:destination="@id/newTaskFragment" />
+            app:destination="@id/newTaskFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_Auth"
+            app:destination="@id/Auth"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/newTaskFragment"

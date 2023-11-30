@@ -3,24 +3,34 @@ package com.devgusta.crud_taskapp.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.devgusta.crud_taskapp.data.model.Status
 import com.devgusta.crud_taskapp.data.model.Task
 import com.devgusta.crud_taskapp.databinding.ItemTaskBinding
 
 class TaskAdapter(
-    private val taskList: List<Task>,
     private val taskSelected: (Task, Int) -> Unit
 
-) : RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
+) : ListAdapter<Task, TaskAdapter.MyViewHolder>(DIF_CALLBACK) {
 
-    companion object  {
-            const val SELECTED_BACK : Int = 1
-            const val SELECTED_DELETE : Int = 2
-            const val SELECTED_EDIT : Int = 3
-            const val SELECTED_NEXT : Int = 4
+    companion object {
+        const val SELECTED_BACK: Int = 1
+        const val SELECTED_DELETE: Int = 2
+        const val SELECTED_EDIT: Int = 3
+        const val SELECTED_NEXT: Int = 4
 
+        private val DIF_CALLBACK = object : DiffUtil.ItemCallback<Task>() {
+            override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
+                return oldItem.id == newItem.id && oldItem.task == newItem.task
+            }
 
+            override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
+                return oldItem == newItem && oldItem.task == newItem.task
+            }
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -33,10 +43,9 @@ class TaskAdapter(
         )
     }
 
-    override fun getItemCount(): Int = taskList.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val data = taskList[position]
+        val data = getItem(position)
         holder.binding.textTask.text = data.task
         setIndicators(data, holder)
         holder.binding.btnDelete.setOnClickListener { taskSelected(data, SELECTED_DELETE) }
@@ -49,6 +58,7 @@ class TaskAdapter(
                 holder.binding.btnBack.isVisible = false
                 holder.binding.btnNext.setOnClickListener { taskSelected(task, SELECTED_NEXT) }
             }
+
             Status.TASK_DOING -> {
                 holder.binding.btnBack.setOnClickListener { taskSelected(task, SELECTED_BACK) }
                 holder.binding.btnNext.setOnClickListener { taskSelected(task, SELECTED_NEXT) }

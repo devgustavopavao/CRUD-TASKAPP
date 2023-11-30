@@ -6,14 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.devgusta.crud_taskapp.R
 import com.devgusta.crud_taskapp.databinding.FragmentHomeBinding
 import com.devgusta.crud_taskapp.ui.adapter.ViewPagerAdapter
+import com.devgusta.crud_taskapp.util.showBottomSheet
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +32,18 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = Firebase.auth
         initTab()
+        getListeners()
+    }
+
+    private fun getListeners() {
+        binding.btnLogout.setOnClickListener {
+            showBottomSheet( msg = R.string.msg_logout, btnTitle = R.string.btn_exit){
+                auth.signOut()
+                findNavController().navigate(R.id.action_homeFragment_to_Auth)
+            }
+        }
     }
 
     @SuppressLint("SuspiciousIndentation")

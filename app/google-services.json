@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881818149628",
+    "project_id": "task-app-3ba05",
+    "storage_bucket": "task-app-3ba05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881818149628:android:ce5989698569b891606d79",
+        "android_client_info": {
+          "package_name": "com.devgusta.crud_taskapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtbZKYbdRIaNJ_ukxHxaP3J7X1u3Iz7pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

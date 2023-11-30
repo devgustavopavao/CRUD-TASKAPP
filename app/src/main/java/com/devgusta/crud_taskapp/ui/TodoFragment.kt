@@ -33,11 +33,12 @@ class TodoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getListeners()
-        initRecycleView(getLista())
+        initRecycleView()
+        getLista()
     }
 
-    private fun initRecycleView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(taskList) { task, opt ->
+    private fun initRecycleView() {
+        taskAdapter = TaskAdapter{ task, opt ->
             optSelected(task, opt)
 
         }
@@ -69,13 +70,16 @@ class TodoFragment : Fragment() {
         }
     }
 
-    private fun getLista() = listOf(
-        Task("0", "Caminhada com o linor as 18:00", Status.TASK_TODO),
-        Task("1", "Fazer dieta de seg a sex", Status.TASK_TODO),
-        Task("2", "Aos sabados comer frutas", Status.TASK_TODO),
-        Task("3", "Domingo off para comer", Status.TASK_TODO),
-        Task("4", "Entrar pro time do spotfy um dia", Status.TASK_TODO),
-    )
+    private fun getLista() {
+       val taskList = listOf(
+           Task("0", "Caminhada com o linor as 18:00", Status.TASK_TODO),
+           Task("1", "Fazer dieta de seg a sex", Status.TASK_TODO),
+           Task("2", "Aos sabados comer frutas", Status.TASK_TODO),
+           Task("3", "Domingo off para comer", Status.TASK_TODO),
+           Task("4", "Entrar pro time do spotfy um dia", Status.TASK_TODO),
+       )
+        taskAdapter.submitList(taskList)
+}
 
     private fun getListeners() {
         binding.floatingActionButton.setOnClickListener {

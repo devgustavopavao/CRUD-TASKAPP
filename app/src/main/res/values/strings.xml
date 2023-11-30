@@ -26,6 +26,9 @@
     <string name="error_newtask_empty">Digite uma tarefa antes</string>
     <string name="warning">Atenção</string>
     <string name="bottomsheet_accept">Entendi</string>
+    <string name="error_generic">Ops... algo deu errado!</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent elementum sagittis nisl, et lacinia neque pretium quis.</string>
+    <string name="msg_logout">Você está saindo do aplicativo, deseja prosseguir?</string>
+    <string name="btn_exit">Sair</string>
 
 </resources>
