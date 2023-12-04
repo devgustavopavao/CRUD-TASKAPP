@@ -30,5 +30,6 @@
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent elementum sagittis nisl, et lacinia neque pretium quis.</string>
     <string name="msg_logout">Você está saindo do aplicativo, deseja prosseguir?</string>
     <string name="btn_exit">Sair</string>
+    <string name="task_saved">Tarefa salva com sucesso!</string>
 
 </resources>
